@@ -1,4 +1,4 @@
-# TLDP Project Part 2 - Docker
+# TLDP Project Part 2 - k8s
 In this portion of the project you will take the React client and Node.js server from part 1 and run them in separate Docker containers. To keep things manageable you will run MongoDB as a service in the VM just like before.
 
 ## Server
