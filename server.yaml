@@ -1,0 +1,40 @@
+#
+# project-server deployment and service (not exposed outside k8s)
+#
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-server
+  labels:
+    app: project-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-server
+  template:
+    metadata:
+      labels:
+        app: project-server
+    spec:
+      containers:
+      - name: project-server
+        image: drchung5/tldp-server
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: project-server
+  labels:
+    app: project-server
+spec:
+  #type: NodePort
+  selector:
+    app: project-server
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
+  type: LoadBalancer
+---
